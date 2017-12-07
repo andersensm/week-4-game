@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+  <title>Star Wars Game</title>
+  <!--Links to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+  <!--Links to jQuery & Javascript-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="assets/javascript/game.js"></script>
+  <!--Links to CSS-->
+  <link href="https://fonts.googleapis.com/css?family=Pathway+Gothic+One" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+
+<body>
+  <header>
+    <div class="container">
+      <h1><strong>STAR WARS ARENA</strong></h1>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row gamerules">
+        <div class="col-xl-4 col-xs-4"></div>
+        <div class="col-xl-4 col-xs-4">
+          <div class="card border-warning mb-3">
+            <div class="card-header GameInfo1">Rules of the Game & Game Statistics</div>
+            <div class="card-body text-warning GameInfo2">
+              <h4 class="card-title">1. Choose a rebel or empire character.</h4>
+              <p class="card-text">2. Fight each enemy in the arena until winning or defeat!</p>
+              <hr>
+              <p class="card-text">Wins:<span id="wins"></span></p>
+              <br>
+              <p class="card-text">Losses:<span id="losses"></span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 col-xs-4"></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-6 col-md-6 col-xs-6">
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Rebels</div>
+            <div class="card-body">
+              <h4 class="card-title"><!--Place Holder --></h4>
+              <p class="card-text" id="rebels">Rebel character locations</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-6 col-md-6 col-xs-6">
+          <div class="card text-white bg-danger mb-3">
+            <div class="card-header">Empire</div>
+            <div class="card-body">
+              <h4 class="card-title"><!--Place Holder --></h4>
+              <p class="card-text" id="empire">Empire character locations </p>
+            </div>
+          </div>
+        </div>
+        <div class="arena">
+          <div class="col-xs-4">
+            <div class="card text-white bg-dark mb-3">
+              <div class="card-header arena-header">Arena</div>
+              <button type="button" class="btn btn-outline-success attack">Attack Opponent</button>
+              <div class="card-body arena1">
+                <br>
+                <h4 class="card-title arena2">Location for Fighters</h4>
+                <p class="card-text">Content for change of attribution and hits & attacks </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <h4> &copy; Copyright 2017 Sean Andersen</h4>
+    </div>
+  </footer>
+
+</body>
+
+</html>

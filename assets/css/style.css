@@ -1,0 +1,91 @@
+body {
+  position: relative;
+  font-family: 'Pathway Gothic One', sans-serif;
+  background-color: #222;
+  color: white;
+}
+header {
+  border-bottom: 4px solid black;
+  background-color: #222;
+}
+footer {
+  border-top: 4px solid black;
+}
+footer .container {
+  background-color: #222;
+}
+header h1 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 70px;
+  color: #ffc107!important;
+  font-weight: bolder;
+}
+footer h4 {
+  font-family: 'Pathway Gothic One', sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 24px;
+  color: white;
+}
+main {
+  background-color: #222;
+  background-size: cover;
+  background-image: url("../images/deathstar.jpg");
+}
+
+main .container {
+  max-width: 100%;
+}
+
+main .card {
+  margin: 40px;
+  font-size: 22px;
+}
+main .card-header {
+  background-color: #24292e;
+}
+div .card-body img {
+  max-width: 75%;
+}
+.GameInfo1, .GameInfo2 {
+  background-color:#24292e;
+  border-top-width: 1px;
+  color: #ffc107!important;
+  border-color: #ffc107!important;
+}
+button.attack {
+  z-index: 10;
+  background-color:#24292e;
+}
+.arena {
+  text-align: center;
+  margin: 0 auto;
+}
+.arena1 {
+  background-color:#24292e;
+  border: 1px solid white;
+  border-top: 0px solid #24292e;
+}
+.arena-header {
+  background-color:#24292e;
+  border: 1px solid white;
+  border-bottom: 0px solid #24292e;
+}
+.arena2 {
+  height: 200px;
+  background-color:#24292e;
+}
+.gamerules {
+  margin: 0 auto;
+}
+.rebelicon {
+  height: 150px;
+  width: 150px;
+}
+  /* Need to fill in tommorrow, add in white padding and blue border with pixel sized */
+
+.empireicon /* Need to fill in tommorrow, add in white padding and blue border with pixel sized */
