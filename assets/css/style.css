@@ -63,7 +63,6 @@ button.attack {
 }
 .arena {
   text-align: center;
-  margin: 0 auto;
 }
 .arena1 {
   background-color:#24292e;
@@ -84,7 +83,7 @@ button.attack {
 }
 
 
-.icon {
+.rebelicon, .empireicon {
   height: 150px;
   width: 150px;
 }
