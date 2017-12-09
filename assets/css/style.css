@@ -82,10 +82,32 @@ button.attack {
 .gamerules {
   margin: 0 auto;
 }
-.rebelicon {
+
+
+.icon {
   height: 150px;
   width: 150px;
 }
+
+p {
+  color:white;
+}
+
+.iconfix1 {
+  padding: 0;
+  padding-left: 1rem;
+}
+.iconfix2 {
+  padding: 0;
+}
+div.card.iconfix3 {
+  margin: 0px;
+}
+p {
+  font-size: 16px;
+}
+
+
   /* Need to fill in tommorrow, add in white padding and blue border with pixel sized */
 
 .empireicon /* Need to fill in tommorrow, add in white padding and blue border with pixel sized */
