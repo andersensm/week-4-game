@@ -93,7 +93,7 @@ p {
 .rebelcharactericon {
   padding: 0;
   padding-left: 1rem;
-  border: 5px solid #007bff;
+  border: 3px solid #007bff;
 }
 .empirecharactericon {
   padding: 0;
@@ -112,4 +112,8 @@ p {
 img {
   height: 110px;
   width: 110px;
+}
+
+.empirecharactericon:hover, .rebelcharactericon:hover {
+  border: 3px solid #ffc107!important;
 }
