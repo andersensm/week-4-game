@@ -3,6 +3,9 @@ $(document).ready(function() {
   var picksecondchar= false;
   var wins = 0
   var losses = 0
+  var emperordead= false
+  var darthdead = false
+  var bobadead = false
 
 
   console.log('should be true for first pick', pickfirstchar);
@@ -55,13 +58,7 @@ $(document).ready(function() {
   var hanfirstpick = false
   var obifirstpick = false
   var yodafirstpick = false
-  var bobafirstpick = false
-  var darthfirstpick = false
-  var empfirstpick = false
 
-  var hansecondpick = false
-  var obisecondpick = false
-  var yodasecondpick = false
   var bobasecondpick = false
   var darthsecondpick = false
   var empsecondpick = false
@@ -82,8 +79,6 @@ $(document).ready(function() {
 
   function defaultGame() {
     window.location.reload(true);
-
-    console.log('testdefault', pickfirstchar, picksecondchar, han.health, darth.health)
     initiateGame();
 
 
@@ -101,11 +96,10 @@ function initiateGame() {
           $(".han").on("click", function() {
               $("#arena1").append($(".han"))
               $("#rebels").remove()
-              hanfirstpick = true
               pickfirstchar = false
               picksecondchar = true
+              hanfirstpick = true
               console.log('if han first picked, second pick should be true',picksecondchar)
-              this.disabled = true
               pickempiresecond()
           });
           $(".obi").on("click", function() {
@@ -120,75 +114,14 @@ function initiateGame() {
           $(".yoda").on("click", function() {
               $("#arena1").append($(".yoda"))
               $("#rebels").remove()
-              yodafirstpick = true
               pickfirstchar = false
               picksecondchar = true
+              yodafirstpick = true
               console.log('if yoda first picked, second pick should be true',picksecondchar)
               pickempiresecond()
           });
-          $(".boba").on("click", function() {
-              $("#arena1").append($(".boba"))
-              pickfirstchar = false
-              picksecondchar = true
-              bobafirstpick = true
-              console.log('if boba first picked, second pick should be true',picksecondchar)
-              pickrebelsecond()
-          });
-          $(".darth").on("click", function() {
-              $("#arena1").append($(".darth"))
-              pickfirstchar = false
-              picksecondchar = true
-              darthfirstpick = true
-              console.log('if darth first picked, second pick should be true',picksecondchar)
-              pickrebelsecond()
-          });
-          $(".emp").on("click", function() {
-              $("#arena1").append($(".emp"))
-              pickfirstchar = false
-              picksecondchar = true
-              empfirstpick = true
-              console.log('if emperor first picked, second pick should be true',picksecondchar)
-              pickrebelsecond()
-          });
     }
 };
-
-function pickrebelsecond() {
-
-  pickfirstchar = false
-  picksecondchar = true
-
-  if (picksecondchar === true && pickfirstchar === false) {
-
-    console.log('rebel second pick test',picksecondchar)
-
-    $(".firstpick").css("border", "");
-    $(".secondpick").css("border", "solid 5px #ffc107");
-
-    $(".han").on("click", function() {
-        $("#arena2").append($(".han"))
-        picksecondchar = false
-        pickfirstchar = false
-        hansecondpick = true
-        arenafight()
-    });
-    $(".obi").on("click", function() {
-        $("#arena2").append($(".obi"))
-        picksecondchar = false
-        pickfirstchar = false
-        obisecondpick = true
-        arenafight()
-    });
-    $(".yoda").on("click", function() {
-        $("#arena2").append($(".yoda"))
-        picksecondchar = false
-        pickfirstchar = false
-        yodasecondpick = true
-        arenafight()
-    });
-  }
-};
-
 
 function pickempiresecond() {
     pickfirstchar = false
@@ -231,8 +164,6 @@ function arenafight() {
     pickfirstchar = false
     picksecondchar = false
 
-    console.log('testdefault', pickfirstchar, picksecondchar, han.health, darth.health)
-
     if (pickfirstchar === false && picksecondchar === false) {
       $(".firstpick").css("border", "");
       $(".secondpick").css("border", "");
@@ -241,35 +172,44 @@ function arenafight() {
       console.log('arenafighttest')
 
 //YODA VS THREE//////////////////////////
+
           if (yodafirstpick === true && empsecondpick === true ) {
-            console.log('yoda first pick, emperor second pick')
-            $(".attack").on("click", function() {
-              emp.health -= yoda.attack*4//For fast testing purposes
-              yoda.health -= emp.counterattack
-              console.log(emp.health)
-                if (yoda.health > 0 && emp.health > 0) {
-                    $("#emphealth").text("Health :" + emp.health)
-                    $("#yodahealth").text("Health :" + yoda.health)
-                    console.log('emp.health is > 0')
-                } else if (yoda.health < 0) {
-                  alert("you lose!! Start again with a new character!")
-                  losses++
-                  defaultGame()
-                  $("#losses").text("Losses :" + losses)
-                } else if(emp.health < 0) {
-                  alert("you beat emperor palpatine")
-                  $("#arena2").remove()
-                  console.log(darthsecondpick,bobasecondpick,empsecondpick)
-                  if (darthsecondpick === true && bobasecondpick === true && empsecondpick === true) {
-                    console.log(darthsecondpick,)
-                    wins++
-                    $("#wins").text("Wins :" + wins)
-                  }
-                  pickempiresecond()
-                }
-              });
+                  console.log('yoda first pick, emperor second pick')
+                  $(".emp").on("click", function() {
+                    $("#arena2").append($(".emp"))
+                    console.log('second champ test working?')
+                  });//NOTWORKING-----------------------------------------------------
+                  $(".attack").on("click", function() {
+                    emp.health -= yoda.attack*4//For fast testing purposes
+                    yoda.health -= emp.counterattack
+                    console.log(emp.health)
+                      if (yoda.health > 0 && emp.health > 0) {
+                          $("#emphealth").text("Health :" + emp.health)
+                          $("#yodahealth").text("Health :" + yoda.health)
+                          console.log('emp.health is > 0')
+                      } else if (yoda.health < 0) {
+                        alert("you lose!! Start again with a new character!")
+                        losses++
+                        $("#losses").text("Losses :" + losses)
+                      } else if(emp.health < 0) {
+                        alert("you beat emperor palpatine")
+                        $("#arena2").remove()
+                        emperordead = true
+                        empsecondpick = false
+                        console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                        if (emperordead === true && bobadead === true && darthdead === true) {
+                          wins++
+                          $("#wins").text("Wins :" + wins)
+                        }
+                        arenafight()
+                      }
+                    });
             } else if (yodafirstpick === true && darthsecondpick === true) {
-              console.log('yoda first pick, darth vader second pick')
+                    console.log('yoda first pick, darth vader second pick')
+                    $(".darth").on("click", function() {
+                      $("#arena2").append($(".darth"))
+                      console.log('second champ test working?')
+                    });//NOTWORKING-----------------------------------------------------
                     $(".attack").on("click", function() {
                       darth.health -= yoda.attack*4//For fast testing purposes
                       yoda.health -= darth.counterattack
@@ -281,20 +221,26 @@ function arenafight() {
                         } else if (yoda.health < 0) {
                           alert("you lose!! Start again with a new character!")
                           losses++
-                          defaultGame()
                           $("#losses").text("Losses :" + losses)
                         } else if(darth.health < 0) {
                           alert("you beat darth vader")
                           $("#arena2").remove()
-                            if (darthsecondpick === true && bobasecondpick === true && empsecondpick === true) {
-                              wins++
-                              $("#wins").text("Wins :" + wins)
-                            }
-                            pickempiresecond()
+                          darthdead = true
+                          darthsecondpick = false
+                          console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                          if (emperordead === true && bobadead === true && darthdead === true) {
+                            wins++
+                            $("#wins").text("Wins :" + wins)
+                          }
+                            arenafight()
                         }
                      })
               } else if (yodafirstpick === true && bobasecondpick === true) {
-                console.log('yoda first pick, boba fett second pick')
+                    console.log('yoda first pick, boba fett second pick')
+                    $(".boba").on("click", function() {
+                      $("#arena2").append($(".darth"))
+                      console.log('second champ test working?')
+                    });//NOTWORKING-----------------------------------------------------
                     $(".attack").on("click", function() {
                       boba.health -= yoda.attack*4//For fast testing purposes
                       yoda.health -= boba.counterattack
@@ -306,22 +252,21 @@ function arenafight() {
                         } else if (yoda.health < 0) {
                           alert("you lose!! Start again with a new character!")
                           losses++
-                          defaultGame()
                           $("#losses").text("Losses :" + losses)
                         } else if(boba.health < 0) {
                           alert("you beat boba fett")
                           $("#arena2").remove()
-                          if (darthsecondpick === true && bobasecondpick === true && empsecondpick === true) {
+                          bobadead = true
+                          bobasecondpick = false
+                          console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                          if (emperordead === true && bobadead === true && darthdead === true) {
                             wins++
                             $("#wins").text("Wins :" + wins)
                           }
-                          pickempiresecond()
+                          arenafight()
                         }
                     });
                   }
-
-
-
 
 /*
 
@@ -353,56 +298,5 @@ function arenafight() {
                 }
               }
 
-
-
-/*
-  $("#rebels").append(hansolo,obiwan,yodah);
-  $("#empire").append(bobafett,darthvader,emperor);
-
-*/
 initiateGame();
 });
-
-
-//When a button is clicked the chosen icon will be sent to the arena1
-
-
-
-
-//end of code
-
-///end of code
-
-
-
-
-//Working Code
-
-
-
-
-
-//test so far
-
-
-//Choose Characters during intro
-                //Have the background of the Rebels & Empire section blink at the beginning to indicate picking a character and picking a defender
-                //Add some text to show the user must pick a character in the Game settings dialog window
-//Add some text to indicate that the user should pick an enemy
-
-
-
-//When clicked the icon that is first clicked as character will go to the arena
-                //Change background so user know it is there character(add to the word information in the arena text)
-
-//The defender that is clicked will go to the arena
-
-                //Information in the arena word section to indicate "defender is X"
-
-
-
-
-
-
-
-//Arena
