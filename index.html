@@ -36,16 +36,15 @@
             <div class="card-body text-warning GameInfo2 fadein">
               <p class="card-text GameInfo2 firstpick">1. Choose a rebel or empire character, as your character.</p>
               <br>
-              <p class="card-text GameInfo2 secondpick" >2. Once your character is chosen, the other characters from that faction will be unselectable.
-                Pick a character from the opposing side!</p>
+              <p class="card-text GameInfo2 secondpick">2. Once your character is chosen, the other characters from that faction will be unselectable. Pick a character from the opposing side!</p>
               <br>
               <p class="card-text GameInfo2 third-arena">3. Click the 'Attack Opponent' button to fight the opponent. Fight the opponent in the arena until winning or defeat!</p>
               <br>
               <p class="card-text GameInfo2 fourth-remaining">4. Pick a remaining opponent!</p>
               <hr>
-              <p class="card-text">Wins:<span id="wins"></span></p>
+              <p class="card-text" id="wins">Wins: 0</p>
               <br>
-              <p class="card-text">Losses:<span id="losses"></span></p>
+              <p class="card-text" id="losses">Losses: 0</p>
             </div>
           </div>
         </div>
@@ -55,7 +54,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-6 col-md-6 col-xs-6">
-          <div class="card text-white bg-primary mb-3" id="colorchange" >
+          <div class="card text-white bg-primary mb-3" id="colorchange">
             <div class="card-header">Rebels</div>
             <div class="card-body">
               <div class="row" id="rebels">
@@ -136,25 +135,33 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-xl-4 col-md-4 col-xs-4"><!--Placeholder --></div>
+        <div class="col-xl-4 col-md-4 col-xs-4">
+          <!--Placeholder -->
+        </div>
         <div class="col-xl-4 col-md-4 col-xs-4">
           <div class="arena">
             <div class="card text-white bg-dark mb-3">
               <div class="card-header arena-header">Arena</div>
               <button type="button" class="btn btn-outline-success attack">Attack Opponent</button>
               <div class="card-body arena-body">
-                <div class="row" id="arena1">
-                  <h4 class="card-title arena2">YOUR CHOSEN CHARACTER</h4>
+                <div class="row">
+                  <h4 class="card-title arena1">YOUR CHOSEN CHARACTER</h4>
+                  <div id="arena1"></div>
                 </div>
-                <div class="row" id="arena2">
+                <div class="row">
                   <h4 class="card-title arena2">THE OPPOSING CHARACTER</h4>
+                  <div id="arena2"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl-4 col-md-4 col-xs-4"><!--Placeholder --></div>
       </div>
+    </div>
+    <div class="col-xl-4 col-md-4 col-xs-4">
+      <!--Placeholder -->
+    </div>
+    </div>
     </div>
   </main>
   <footer>
