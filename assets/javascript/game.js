@@ -6,6 +6,9 @@ $(document).ready(function() {
   var emperordead= false
   var darthdead = false
   var bobadead = false
+  $("#tempspot").toggle(false)
+  document.getElementsByClassName("attack").disabled = true;
+
 
 
   console.log('should be true for first pick', pickfirstchar);
@@ -55,79 +58,121 @@ $(document).ready(function() {
     img: "<img src='./assets/images/emperorpalp.jpg'>"
   };
 
-  var hanfirstpick = false
-  var obifirstpick = false
-  var yodafirstpick = false
+  var hanpicked = false
+  var obipicked = false
+  var yodapicked = false
 
-  var bobasecondpick = false
-  var darthsecondpick = false
-  var empsecondpick = false
-
-  var hansolo = ($("<div class='card text-white bg-primary mb-3 iconfix3 rebelicon han'>").append($("<div class='card-header rebelcharactericon'>Han Solo</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health:" + han.health + "</p>").append($("<div class='card-body iconfix2'>").append($(han.img)))))));
+  var bobapicked = false
+  var darthpicked = false
+  var emperorpicked = false
 
 
-  var obiwan = ($("<div class='card text-white bg-primary mb-3 iconfix3 rebelicon obi'>").append($("<div class='card-header rebelcharactericon'>Obi-Wan</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health:" + obi.health + "</p>").append($("<div class='card-body iconfix2'>").append($(obi.img)))))));
+function defaultGame() {
+  document.getElementsByClassName("attack").disabled = true;
+  console.log('default game does work')
+  $("#arena2").toggle(true)
+  $("#arena3").toggle(true)
+  $("#arena4").toggle(true)
+  $("#rebels").toggle(true)
+  console.log(emp.health,darth.health,boba.health,yoda.health)
+  han = {
+    name : "Han-Solo",
+    health : 90,
+    attack : 9,
+    counterattack : 6,
+    img: "<img src='./assets/images/han-solo.jpg'>"
+  };
+  obi = {
+    name : "Obi-Wan",
+    health : 110,
+    attack : 10,
+    counterattack : 15,
+    img: "<img src='./assets/images/obi-wan.jpg'>"
+  };
+  yoda = {
+    name : "Yoda",
+    health : 120,
+    attack : 14,
+    counterattack : 16,
+    img: "<img src='./assets/images/yoda.jpg'>"
+  };
+  boba = {
+    name : "Boba-Fett",
+    health : 80,
+    attack : 6,
+    counterattack : 9,
+    img: "<img src='./assets/images/bobafett.jpg'>"
+  };
+  darth = {
+    name : "Darth-Vader",
+    health : 140,
+    attack : 18,
+    counterattack : 12,
+    img: "<img src='./assets/images/darthvader.jpg'>"
+  };
+  emp = {
+    name : "Emperor",
+    health : 100,
+    attack : 20,
+    counterattack : 10,
+    img: "<img src='./assets/images/emperorpalp.jpg'>"
+  };
+  console.log(emp.health,darth.health,boba.health,yoda.health)
+  $("#emphealth").text("Health :" + emp.health)
+  $("#darthhealth").text("Health :" + darth.health)
+  $("#bobahealth").text("Health :" + boba.health)
+  $("#yodahealth").text("Health :" + yoda.health)
+  console.log(emp.health,darth.health,boba.health,yoda.health)
+  $("#rebels").append($(".han"))
+  $("#rebels").append($(".obi"))
+  $("#rebels").append($(".yoda"))
+  $("#empire").append($(".boba"))
+  $("#empire").append($(".darth"))
+  $("#empire").append($(".emp"))
+  hanpicked = false
+  obipicked = false
+  yodapicked = false
 
-  var yodah = ($("<div class='card text-white bg-primary mb-3 iconfix3 rebelicon yoda'>").append($("<div class='card-header rebelcharactericon'>Yoda</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health:" + yoda.health + "</p>").append($("<div class='card-body iconfix2'>").append($(yoda.img)))))));
+  bobapicked = false
+  darthpicked = false
+  emperorpicked = false
 
-  var bobafett = ($("<div class='card text-white bg-danger mb-3 iconfix3 empireicon boba'>").append($("<div class='card-header empirecharactericon'>Boba Fett</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health: " + boba.health + "</p>").append($("<div class='card-body iconfix2'>").append($(boba.img)))))));
-
-  var darthvader = ($("<div class='card text-white bg-danger mb-3 iconfix3 empireicon darth'>").append($("<div class='card-header empirecharactericon'>Darth Vader</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health:" + darth.health + "</p>").append($("<div class='card-body iconfix2'>").append($(darth.img)))))));
-
-  var emperor = ($("<div class='card text-white bg-danger mb-3 iconfix3 empireicon emp'>").append($("<div class='card-header empirecharactericon'>Emperor</div>").append($("<div class='card-body iconfix2'>").append($("<p class='card-text'>Health:" + emp.health + "</p>").append($("<div class='card-body iconfix2'>").append($(emp.img)))))));
-
-
-  function defaultGame() {
-    window.location.reload(true);
-    initiateGame();
+  initiateGame();
 
 
   }
 
-
 function initiateGame() {
 
-      if (pickfirstchar === true && picksecondchar === false) {
           $(".firstpick").css("border", "solid 5px #ffc107");
+          $(".secondpick").css("border", "");
+          $(".third-arena").css("border", "");
+          $(".fourth-remaining").css("border", "");
 
-          /*
-          $(".gamesettings").text("PICK YOUR CHARACTER TO FIGHT IN THE ARENA");  //Make this blink so the person sees it more clearly
-          */
           $(".han").on("click", function() {
               $("#arena1").append($(".han"))
-              $("#rebels").remove()
-              pickfirstchar = false
-              picksecondchar = true
-              hanfirstpick = true
+              $("#rebels").toggle(false)
+              hanpicked = true
               console.log('if han first picked, second pick should be true',picksecondchar)
               pickempiresecond()
           });
           $(".obi").on("click", function() {
               $("#arena1").append($(".obi"))
-              $("#rebels").remove()
-              pickfirstchar = false
-              picksecondchar = true
+              $("#rebels").toggle(false)
               obifirstpick = true
               console.log('if obi first picked, second pick should be true',picksecondchar)
               pickempiresecond()
           });
           $(".yoda").on("click", function() {
               $("#arena1").append($(".yoda"))
-              $("#rebels").remove()
-              pickfirstchar = false
-              picksecondchar = true
-              yodafirstpick = true
+              $("#rebels").toggle(false)
+              yodapicked = true
               console.log('if yoda first picked, second pick should be true',picksecondchar)
               pickempiresecond()
           });
-    }
-};
+
 
 function pickempiresecond() {
-    pickfirstchar = false
-    picksecondchar = true
-
-    if (picksecondchar === true && pickfirstchar === false) {
 
       console.log('empire second pick test',picksecondchar)
 
@@ -136,134 +181,157 @@ function pickempiresecond() {
 
       $(".boba").on("click", function() {
           $("#arena2").append($(".boba"))
-          picksecondchar = false
-          pickfirstchar = false
-          bobasecondpick = true
+          bobapicked = true
           arenafight()
       });
       $(".darth").on("click", function() {
-          $("#arena2").append($(".darth"))
-          picksecondchar = false
-          pickfirstchar = false
-          darthsecondpick = true
+          $("#arena3").append($(".darth"))
+          darthpicked = true
           arenafight()
       });
       $(".emp").on("click", function() {
-          $("#arena2").append($(".emp"))
-          picksecondchar = false
-          pickfirstchar = false
-          empsecondpick = true
+          $("#arena4").append($(".emp"))
+          emperorpicked = true
           arenafight()
       });
-    }
-  }
+
+
 
 
 function arenafight() {
 
-    pickfirstchar = false
-    picksecondchar = false
+      document.getElementsByClassName("attack").disabled = false;
 
-    if (pickfirstchar === false && picksecondchar === false) {
       $(".firstpick").css("border", "");
       $(".secondpick").css("border", "");
       $(".third-arena").css("border", "solid 5px #ffc107");
 
       console.log('arenafighttest')
 
-//YODA VS THREE//////////////////////////
 
-          if (yodafirstpick === true && empsecondpick === true ) {
+
+
+//My alerts for wins & losses are making the character(s) health go down 
+
+
+      console.log('whospickedrightnow',emperorpicked,bobapicked,darthpicked)
+
+          if (yodapicked === true && emperorpicked === true ) {
+
+
                   console.log('yoda first pick, emperor second pick')
-                  $(".emp").on("click", function() {
-                    $("#arena2").append($(".emp"))
-                    console.log('second champ test working?')
-                  });//NOTWORKING-----------------------------------------------------
                   $(".attack").on("click", function() {
-                    emp.health -= yoda.attack*4//For fast testing purposes
+                    emp.health -= yoda.attack
                     yoda.health -= emp.counterattack
-                    console.log(emp.health)
+                    console.log('emp health',emp.health)
                       if (yoda.health > 0 && emp.health > 0) {
                           $("#emphealth").text("Health :" + emp.health)
                           $("#yodahealth").text("Health :" + yoda.health)
                           console.log('emp.health is > 0')
                       } else if (yoda.health < 0) {
+                        $("#arena4").toggle(false)
+                        document.getElementsByClassName("attack").disabled = true;
                         alert("you lose!! Start again with a new character!")
+                        yoda.health  = 120
                         losses++
                         $("#losses").text("Losses :" + losses)
+                        defaultGame();
                       } else if(emp.health < 0) {
+                        $("#arena4").toggle(false)
+                        document.getElementsByClassName("attack").disabled = true;
                         alert("you beat emperor palpatine")
-                        $("#arena2").remove()
                         emperordead = true
-                        empsecondpick = false
+                        emperorpicked = false
                         console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                        emp.health = 500000
+                        $(".firstpick").css("border", "");
+                        $(".secondpick").css("border", "");
+                        $(".third-arena").css("border", "solid 5px #ffc107");
+                        $(".fourth-remaining").css("border", "solid 5px #ffc107");
                         if (emperordead === true && bobadead === true && darthdead === true) {
                           wins++
                           $("#wins").text("Wins :" + wins)
+                          defaultGame();
                         }
-                        arenafight()
+                        pickempiresecond();
                       }
                     });
-            } else if (yodafirstpick === true && darthsecondpick === true) {
+            } else if (yodapicked === true && darthpicked === true) {
                     console.log('yoda first pick, darth vader second pick')
-                    $(".darth").on("click", function() {
-                      $("#arena2").append($(".darth"))
-                      console.log('second champ test working?')
-                    });//NOTWORKING-----------------------------------------------------
                     $(".attack").on("click", function() {
-                      darth.health -= yoda.attack*4//For fast testing purposes
+                      darth.health -= yoda.attack
                       yoda.health -= darth.counterattack
-                      console.log(darth.health)
+                      console.log('darth health',darth.health)
                         if (yoda.health > 0 && darth.health > 0) {
                             $("#darthhealth").text("Health :" + darth.health)
                             $("#yodahealth").text("Health :" + yoda.health)
                             console.log('darth.health is > 0')
                         } else if (yoda.health < 0) {
+                          $("#arena3").toggle(false)
+                          document.getElementsByClassName("attack").disabled = true;
                           alert("you lose!! Start again with a new character!")
+                          yoda.health  = 120
                           losses++
                           $("#losses").text("Losses :" + losses)
+                          defaultGame();
                         } else if(darth.health < 0) {
+                          $("#arena3").toggle(false)
+                          document.getElementsByClassName("attack").disabled = true;
                           alert("you beat darth vader")
-                          $("#arena2").remove()
                           darthdead = true
-                          darthsecondpick = false
+                          darthpicked = false
                           console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                          darth.health = 5000000
+                          $(".firstpick").css("border", "");
+                          $(".secondpick").css("border", "");
+                          $(".third-arena").css("border", "solid 5px #ffc107");
+                          $(".fourth-remaining").css("border", "solid 5px #ffc107");
                           if (emperordead === true && bobadead === true && darthdead === true) {
                             wins++
                             $("#wins").text("Wins :" + wins)
+                            defaultGame();
                           }
-                            arenafight()
+                          pickempiresecond();
                         }
                      })
-              } else if (yodafirstpick === true && bobasecondpick === true) {
+              } else if (yodapicked === true && bobapicked === true) {
                     console.log('yoda first pick, boba fett second pick')
-                    $(".boba").on("click", function() {
-                      $("#arena2").append($(".darth"))
-                      console.log('second champ test working?')
-                    });//NOTWORKING-----------------------------------------------------
                     $(".attack").on("click", function() {
-                      boba.health -= yoda.attack*4//For fast testing purposes
+                      boba.health -= yoda.attack
                       yoda.health -= boba.counterattack
-                      console.log(boba.health)
+                      console.log('boba health', boba.health)
                         if (yoda.health > 0 && boba.health > 0) {
                             $("#bobahealth").text("Health :" + boba.health)
                             $("#yodahealth").text("Health :" + yoda.health)
-                            console.log('darth.health is > 0')
+                            console.log('boba.health is > 0')
                         } else if (yoda.health < 0) {
+                          $("#arena2").toggle(false)
+                          document.getElementsByClassName("attack").disabled = true;
                           alert("you lose!! Start again with a new character!")
+                          yoda.health  = 120
                           losses++
                           $("#losses").text("Losses :" + losses)
+                          defaultGame();
                         } else if(boba.health < 0) {
+                          $("#arena2").toggle(false)
+                          document.getElementsByClassName("attack").disabled = true;
                           alert("you beat boba fett")
-                          $("#arena2").remove()
                           bobadead = true
-                          bobasecondpick = false
+                          bobapicked = false
                           console.log('empirecharsdead',bobadead,darthdead,emperordead)
+                          boba.health = 500000
+                          console.log(boba.health)
+                          console.log(bobapicked)
+                          $(".firstpick").css("border", "");
+                          $(".secondpick").css("border", "");
+                          $(".third-arena").css("border", "solid 5px #ffc107");
+                          $(".fourth-remaining").css("border", "solid 5px #ffc107");
                           if (emperordead === true && bobadead === true && darthdead === true) {
                             wins++
                             $("#wins").text("Wins :" + wins)
+                            defaultGame();
                           }
-                          arenafight()
+                          pickempiresecond();
                         }
                     });
                   }
@@ -295,6 +363,7 @@ function arenafight() {
                       alert("you beat all opponents! Start again with a new character!")
                     }
                     */
+                  }
                 }
               }
 

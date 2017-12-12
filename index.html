@@ -34,13 +34,13 @@
           <div class="card border-warning mb-3">
             <div class="card-header GameInfo1">Rules of the Game & Game Statistics</div>
             <div class="card-body text-warning GameInfo2 fadein">
-              <p class="card-text GameInfo2 firstpick">1. Choose a rebel or empire character, as your character.</p>
+              <p class="card-text GameInfo2 firstpick">1. Choose a rebel character, as your character.</p>
               <br>
-              <p class="card-text GameInfo2 secondpick">2. Once your character is chosen, the other characters from that faction will be unselectable. Pick a character from the opposing side!</p>
+              <p class="card-text GameInfo2 secondpick">2. Once your rebel character is chosen, the other characters from that faction will be unselectable. Pick a character from the opposing side!</p>
               <br>
               <p class="card-text GameInfo2 third-arena">3. Click the 'Attack Opponent' button to fight the opponent. Fight the opponent in the arena until winning or defeat!</p>
               <br>
-              <p class="card-text GameInfo2 fourth-remaining">4. Pick a remaining opponent!</p>
+              <p class="card-text GameInfo2 fourth-remaining">4. If you beat the first enemy, pick another opponent!</p>
               <hr>
               <p class="card-text" id="wins">Wins: 0</p>
               <br>
@@ -151,6 +151,8 @@
                 <div class="row">
                   <h4 class="card-title arena2">THE OPPOSING CHARACTER</h4>
                   <div id="arena2"></div>
+                  <div id="arena3"></div>
+                  <div id="arena4"></div>
                 </div>
               </div>
             </div>
@@ -158,7 +160,7 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-4 col-md-4 col-xs-4">
+    <div class="col-xl-4 col-md-4 col-xs-4" id="tempspot">
       <!--Placeholder -->
     </div>
     </div>
